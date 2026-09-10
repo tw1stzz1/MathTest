@@ -1,7 +1,2 @@
-struct Task {
+#include "Lib.h"
 
-};
-
-struct MathTest {
-
-};
