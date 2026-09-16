@@ -20,49 +20,42 @@ struct Task {
 	Task(int min, int max, char operation_num = '\0');
 };
 
-Task::Task() {
-	num_1 = rand() % 10;
-	num_2 = rand() % 10;
-	operation = static_cast <Operation> (rand() % 4);
-	switch (operation) {
-		case Add: 
-			answer = num_1 + num_2;
-			break;
-		case Subtract:
-			answer = num_1 - num_2;
-			break;
-		case Multiplication:
-			answer = num_1 * num_2;
-			break;
-		case Division:
-			answer = num_1 / num_2;
-			break;
-	}
+
+class MathTest {
+	Task* _tasks;
+	int _questions_count;
+	int* _user_answers;
+	int _correct_answers_count;
+public:
+	MathTest(int questons_amount);
+	MathTest(int questons_amount, int min, int max);
+	MathTest(int questons_amount, int min, int max, int operation_num);
+
+	Task* tasks() const noexcept;
+	int questions_count();
+	int* get_user_answers() const noexcept;
+	int correct_answers_count();
+
+	void tasks(Task*);
+	void questions_count(int);
+	void user_answers(int*);
+	void correct_answers_count(int);
+
+	void run();
+	int get_questions_amount();
+	void create_tasks();
+	void check_user_answer();
+	void show_stat();
+};
+
+int* MathTest::get_user_answers() const noexcept {
+	return  _user_answers;
 }
 
-Task::Task(int min, int max, char operation_num) {
-	num_1 = rand() % (max - min + 1) + min;
-	num_2 = rand() % (max - min + 1) + min;
-	if (operation_num == '\0') {
-		operation = static_cast <Operation> (rand() % 4);
-	}
-	else {
-		operation = static_cast <Operation> (operation_num);
-	}
-	switch (operation) {
-	case Add:
-		answer = num_1 + num_2;
-		break;
-	case Subtract:
-		answer = num_1 - num_2;
-		break;
-	case Multiplication:
-		answer = num_1 * num_2;
-		break;
-	case Division:
-		answer = num_1 / num_2;
-		break;
-	}
+MathTest::MathTest() {
+
 }
 
-class MathTest;
+void MathTest::run() {
+
+}
