@@ -43,6 +43,7 @@ public:
 	void question_user();
 	void check_user_answer(int, int);
 	void show_stat();
+	char grade_test();
 };
 
 int* MathTest::get_user_answers() const noexcept {
@@ -53,9 +54,13 @@ int MathTest::questions_count() {
 	return _questions_count;
 }
 
+int MathTest::correct_answers_count() {
+	return _correct_answers_count;
+}
+
 MathTest::MathTest(int questons_count) {
 	_questions_count = questons_count;
-	create_tasks(); // this -> ????????????????
+	create_tasks();
 	run();
 }
 MathTest::MathTest(int questons_count, int min, int max) {
@@ -78,6 +83,7 @@ void MathTest::run() {
 }
 
 void MathTest::question_user() {
+	_user_answers = new int[_questions_count];
 	for (int i = 0; i < _questions_count; i++) {
 		char oper;
 		int user_answer;
@@ -97,13 +103,14 @@ void MathTest::question_user() {
 		}
 		std::cout << _tasks[i].num_1 << oper << _tasks[i].num_2 << '= ';
 		std::cin >> user_answer;
-		check_user_answer(user_answer, _tasks[i].answer);
+		_user_answers[i] = user_answer;
 		std::cout << std::endl;
 		system("cls");
 	}
 }
 
 void MathTest::create_tasks(int min, int max, char operation_num) {
+	_tasks = new Task[_questions_count];
 	if(min == 0 && max == 0) {
 		for (int i = 0; i < _questions_count; i++) {
 			Task t;
@@ -119,5 +126,5 @@ void MathTest::create_tasks(int min, int max, char operation_num) {
 }
 
 void MathTest::check_user_answer(int user_answer, int answer) {
-	if 
+	if (user_answer == answer) _correct_answers_count++;
 }

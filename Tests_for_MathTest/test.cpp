@@ -50,3 +50,9 @@ TEST(TestTask, TaskUserInitialization) {
 	}
 	EXPECT_EQ(t1.answer, answer);
 }
+
+TEST(TestMathTest, BetaMathTest) {
+	MathTest t(2);
+
+	EXPECT_TRUE(true);
+}
