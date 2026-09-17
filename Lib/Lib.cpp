@@ -16,7 +16,8 @@ Task::Task() {
 		answer = num_1 * num_2;
 		break;
 	case Division:
-		answer = num_1 / num_2;
+		answer = rand() % 10;
+		num_1 = num_2 * answer;
 		break;
 	}
 }
@@ -41,7 +42,8 @@ Task::Task(int min, int max, char operation_num) {
 		answer = num_1 * num_2;
 		break;
 	case Division:
-		answer = num_1 / num_2;
+		answer = rand() % (max - min + 1) + min;
+		num_1 = num_2 * answer;
 		break;
 	}
 }
